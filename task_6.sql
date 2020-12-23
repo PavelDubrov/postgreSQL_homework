@@ -1,6 +1,6 @@
 -- task_6
-select percentile_disc(0.5) within group (order by tmp.num_of_vac) as median
-from 
-(select company_id, count(vacancy_id) num_of_vac
-from vacancy
-group by company_id) as tmp;
+SELECT percentile_disc(0.5) WITHIN group (ORDER BY tmp.num_of_vac) AS median
+FROM 
+(SELECT company_id, count(vacancy_id) num_of_vac
+FROM vacancy
+GROUP BY company_id) AS tmp;

@@ -2,7 +2,7 @@
 SELECT company_name, max_person
 FROM
 (
-	SELECT company_id, MAX(person_on_vac) as max_person
+	SELECT company_id, MAX(person_on_vac) AS max_person
 	FROM
 	(
 		SELECT company_id, vacancy_name, COUNT(person_id) person_on_vac
@@ -16,6 +16,6 @@ FROM
 	ORDER BY max_person DESC
 ) AS tmp2
 
-INNER JOIN company ON company.company_id = tmp2.company_id
-ORDER BY max_person DESC, company_name ASC
+RIGHT JOIN company ON company.company_id = tmp2.company_id
+ORDER BY max_person DESC NULLS LAST, company_name ASC
 LIMIT 5;
